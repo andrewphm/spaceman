@@ -1,3 +1,4 @@
+from operator import truediv
 import random
 
 
@@ -47,8 +48,15 @@ def get_guessed_word(secret_word, letters_guessed):
     """
 
     # TODO: Loop through the letters in secret word and build a string that shows the letters that have been guessed correctly so far that are saved in letters_guessed and underscores for the letters that have not been guessed yet
+    guess_so_far = ""
 
-    pass
+    for letter in secret_word:
+        if letter in letters_guessed:
+            guess_so_far += letter
+        else:
+            guess_so_far += "_"
+
+    return guess_so_far
 
 
 def is_guess_in_word(guess, secret_word):
@@ -65,7 +73,10 @@ def is_guess_in_word(guess, secret_word):
     """
     # TODO: check if the letter guess is in the secret word
 
-    pass
+    if guess in secret_word:
+        return True
+    else:
+        return False
 
 
 def prompt_letter():
@@ -75,7 +86,7 @@ def prompt_letter():
             print("Please only enter one letter at a time.")
             continue
         else:
-            break
+            return user_letter
 
 
 def spaceman(secret_word):
