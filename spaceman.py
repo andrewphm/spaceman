@@ -89,6 +89,18 @@ def prompt_letter():
             return user_letter
 
 
+def unguessed_letters(guessed_letters):
+    # Returns letters not guessed yet
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    alphabet_array = [i for i in alphabet]
+    index = 0
+    for letter in alphabet_array:
+        if letter in guessed_letters:
+            alphabet_array[index] = ""
+        index += 1
+    return "".join(alphabet_array)
+
+
 def spaceman(secret_word):
     """
     A function that controls the game of spaceman. Will start spaceman in the command line.
@@ -114,13 +126,17 @@ def spaceman(secret_word):
         if is_guess_in_word(guess, secret_word):
             print("Your guess appears in the word!")
             print(f"Guessed word so far: {get_guessed_word(secret_word, guesses)}")
-            print("These letters haven't been guessed yet: {}")
+            print(
+                f"These letters haven't been guessed yet: {unguessed_letters(guesses)}"
+            )
         else:
             print("Sorry your guess was not in the word, try again.")
             num_of_guesses -= 1
             print(f"You have {num_of_guesses} incorrect guesses left")
             print(f"Guessed word so far: {get_guessed_word(secret_word, guesses)}")
-            print("These letters haven't been guessed yet: {}")
+            print(
+                f"These letters haven't been guessed yet: {unguessed_letters(guesses)}"
+            )
 
     # TODO: Check if the guessed letter is in the secret or not and give the player feedback
 
