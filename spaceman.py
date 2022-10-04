@@ -90,7 +90,11 @@ def is_guess_in_word(guess, secret_word):
 
 def prompt_letter(guessed_letters):
     """
-    docstring
+    Prompts user for a letter to guess. Validates if it's only one letter and if it has been guessed before.
+    Parameters:
+        guessed_letters (string): the letters previously guessed
+    Returns:
+        user_letter: a character the user guesses
     """
     while True:
         user_letter = input("Enter a letter: ")
@@ -107,7 +111,11 @@ def prompt_letter(guessed_letters):
 
 def unguessed_letters(guessed_letters):
     """
-    docstring
+    A function to return a string of unguessed letters.
+    Paramters:
+        guessed_letters (list): a list of letters already guessed.
+    Returns:
+        letters_unguessed (string) showing letters the user has not guessed yet.
     """
     alphabet = "abcdefghijklmnopqrstuvwxyz"
     letters_unguessed = ""
